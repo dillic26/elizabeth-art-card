@@ -1,7 +1,31 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#faf4eb"><title>Elizabeth Dillinger | Artistry</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#f3ede6}body{display:flex;justify-content:center;align-items:center;min-height:100vh;min-height:100dvh;padding:0;font-family:Georgia,'Times New Roman',serif;color:#073a52}.card{width:min(100vw,650px,calc(100dvh * 2 / 3));aspect-ratio:2/3;flex:none;position:relative;container-type:inline-size;background:url('assets/background.png') center/100% 100% no-repeat;overflow:hidden;box-shadow:0 6px 32px #0002}.titles{position:absolute;top:38.9%;left:37%;width:50%;height:7.1%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.18cqw}.title{font-size:2.65cqw;line-height:1.24;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;color:#073b54}.buttons{position:absolute;top:50.6%;left:39%;width:44%;height:33.5%;display:flex;flex-direction:column;justify-content:center;gap:.75cqw}.action{position:relative;isolation:isolate;flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#082d43;border:0;background:transparent;overflow:visible;cursor:pointer;padding:0;font:inherit;transition:transform .15s,filter .15s}.action::before{content:"";position:absolute;inset:-13% -4%;z-index:-1;background-image:var(--stroke);background-position:center;background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}.action::after{display:none}.action:hover{transform:translateX(2px);filter:saturate(1.16) brightness(1.04)}.action:focus-visible{outline:2px solid #073a52;outline-offset:2px}.action .label{display:block;text-align:center;font-family:Optima,"Avenir Next",sans-serif;font-size:2.8cqw;font-weight:500;letter-spacing:.095em;color:#111111;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 1px rgba(255,255,255,.6)}.pink,.turquoise,.purple,.gold,.blue,.red,.black{}.action[aria-disabled="true"]{opacity:.72} @media(max-width:420px){.card{box-shadow:none}}@media(prefers-reduced-motion:reduce){.action{transition:none}}
+
+/* Mobile-first: preserve the portrait artwork and its embedded lettering. */
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#f3ede6}
+body{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;color:#073a52}
+.card{position:relative;flex:none;container-type:inline-size;width:min(100vw,calc(100dvh * 709 / 1536));aspect-ratio:709 / 1536;background:url('assets/background.png') center/100% 100% no-repeat;overflow:hidden;box-shadow:0 6px 32px #0002}
+.titles{position:absolute;top:39.3%;left:12%;width:76%;height:7.0%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.25cqw}
+.title{font-size:3.65cqw;line-height:1.22;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:#073b54}
+.buttons{position:absolute;top:50.1%;left:16%;width:68%;height:31.2%;display:flex;flex-direction:column;justify-content:center;gap:1.15cqw}
+.action{position:relative;isolation:isolate;flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none;border:0;background:transparent;overflow:visible;cursor:pointer;padding:0;font:inherit;transition:transform .15s,filter .15s}
+.action::before{content:"";position:absolute;inset:-13% -4%;z-index:-1;background-image:var(--stroke);background-position:center;background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.action:hover{transform:translateX(2px);filter:saturate(1.16) brightness(1.04)}
+.action:focus-visible{outline:2px solid #073a52;outline-offset:2px}
+.action .label{display:block;text-align:center;font-family:Optima,"Avenir Next",sans-serif;font-size:4.1cqw;font-weight:500;letter-spacing:.095em;color:#111;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 1px rgba(255,255,255,.6)}
+.action[aria-disabled="true"]{opacity:.72}
+/* Wider displays keep the original 2:3 card composition and background. */
+@media(min-width:700px){
+ .card{width:min(650px,calc(100dvh * 2 / 3));aspect-ratio:2/3;background-image:url('assets/background2.png')}
+ .titles{top:38.9%;left:37%;width:50%;height:7.1%;gap:.18cqw}
+ .title{font-size:2.65cqw;letter-spacing:.18em}
+ .buttons{top:50.6%;left:39%;width:44%;height:33.5%;gap:.75cqw}
+ .action .label{font-size:2.8cqw}
+}
+@media(max-width:699px){.card{box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.action{transition:none}}
 </style></head><body><main class="card" aria-label="Elizabeth Dillinger digital business card"><section class="titles" id="titles" aria-label="Artistic specialties"></section><nav class="buttons" id="buttons" aria-label="Contact Elizabeth"></nav></main><script src="settings.js"></script><script>
 (function(){'use strict';
 const cfg=window.ELIZABETH_CARD||{}, contact=cfg.contact||{}, titles=document.getElementById('titles'),buttons=document.getElementById('buttons');
