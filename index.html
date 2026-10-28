@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#faf4eb"><title>Elizabeth Dillinger | Artistry</title>
+<style>
+
+/* Mobile-first: preserve the portrait artwork and its embedded lettering. */
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#f3ede6}
+body{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;color:#073a52}
+.card{position:relative;flex:none;container-type:inline-size;width:min(100vw,calc(100dvh * 709 / 1536));aspect-ratio:709 / 1536;background:url('assets/background.png') center/100% 100% no-repeat;overflow:hidden;box-shadow:0 6px 32px #0002}
+.titles{position:absolute;top:39.3%;left:12%;width:76%;height:7.0%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.25cqw}
+.title{font-size:3.65cqw;line-height:1.22;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:#073b54}
+.buttons{position:absolute;top:50.1%;left:16%;width:68%;height:31.2%;display:flex;flex-direction:column;justify-content:center;gap:1.15cqw}
+.action{position:relative;isolation:isolate;flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none;border:0;background:transparent;overflow:visible;cursor:pointer;padding:0;font:inherit;transition:transform .15s,filter .15s}
+.action::before{content:"";position:absolute;inset:-13% -4%;z-index:-1;background-image:var(--stroke);background-position:center;background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.action:hover{transform:translateX(2px);filter:saturate(1.16) brightness(1.04)}
+.action:focus-visible{outline:2px solid #073a52;outline-offset:2px}
+.action .label{display:block;text-align:center;font-family:Optima,"Avenir Next",sans-serif;font-size:4.1cqw;font-weight:500;letter-spacing:.095em;color:#111;text-transform:uppercase;white-space:nowrap;text-shadow:0 1px 1px rgba(255,255,255,.6)}
+.action[aria-disabled="true"]{opacity:.72}
+/* Wider displays keep the original 2:3 card composition and background. */
+@media(min-width:700px){
+ .card{width:min(650px,calc(100dvh * 2 / 3));aspect-ratio:2/3;background-image:url('assets/background2.png')}
+ .titles{top:38.9%;left:37%;width:50%;height:7.1%;gap:.18cqw}
+ .title{font-size:2.65cqw;letter-spacing:.18em}
+ .buttons{top:50.6%;left:39%;width:44%;height:33.5%;gap:.75cqw}
+ .action .label{font-size:2.8cqw}
+}
+@media(max-width:699px){.card{box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.action{transition:none}}
+</style></head><body><main class="card" aria-label="Elizabeth Dillinger digital business card"><section class="titles" id="titles" aria-label="Artistic specialties"></section><nav class="buttons" id="buttons" aria-label="Contact Elizabeth"></nav></main><script src="settings.js"></script><script>
+(function(){'use strict';
+const cfg=window.ELIZABETH_CARD||{}, contact=cfg.contact||{}, titles=document.getElementById('titles'),buttons=document.getElementById('buttons');
+(cfg.titles||[]).forEach(t=>{const d=document.createElement('div');d.className='title';d.textContent=t;titles.append(d)});
+const unusedPaths={email:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 7 9-7"/>',phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7l.5 3a2 2 0 0 1-.6 1.7L7 10a16 16 0 0 0 7 7l1.6-2a2 2 0 0 1 1.7-.6l3 .5a2 2 0 0 1 1.7 2Z"/>',instagram:'<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',facebook:'<path d="M15 21v-8h3l.5-4H15V7c0-1.2.4-2 2-2h2V2.2A21 21 0 0 0 16.1 2C13.1 2 11 3.8 11 7v2H8v4h3v8"/>',globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/>',contact:'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="10" cy="10" r="2.5"/><path d="M5.5 18v-1c0-2.3 9-2.3 9 0v1M17 8h2M17 12h2M17 16h2"/>',youtube:'<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/>',tiktok:'<path d="M14 3v11.5a4.5 4.5 0 1 1-4.5-4.5M14 3c.5 3 2.5 5 6 5"/>',link:'<path d="M10 13a5 5 0 0 0 7 .4l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7-.4l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>'};
+const escapeV=s=>String(s||'').replace(/\\/g,'\\\\').replace(/\r?\n/g,'\\n').replace(/[,;]/g,m=>'\\'+m);
+function save(){const lines=['BEGIN:VCARD','VERSION:3.0','FN:'+escapeV(contact.name||'Elizabeth Dillinger'),'N:Dillinger;Elizabeth;;;'];if(contact.email)lines.push('EMAIL;TYPE=INTERNET:'+escapeV(contact.email));if(contact.phone)lines.push('TEL;TYPE=CELL:'+escapeV(contact.phone));if(contact.website)lines.push('URL:'+escapeV(contact.website));if(contact.instagram)lines.push('X-SOCIALPROFILE;TYPE=instagram:'+escapeV(contact.instagram));if(contact.facebook)lines.push('X-SOCIALPROFILE;TYPE=facebook:'+escapeV(contact.facebook));lines.push('END:VCARD');const url=URL.createObjectURL(new Blob([lines.join('\r\n')+'\r\n'],{type:'text/vcard;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='Elizabeth-Dillinger.vcf';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+const keys={email:'email',phone:'phone',instagram:'instagram',facebook:'facebook',website:'website',portfolio:'website'};
+(cfg.buttons||[]).filter(b=>b.show!==false).forEach(b=>{const action=b.action||'',val=b.url||(keys[action]?contact[keys[action]]:'');let href='';if(action==='email'&&val)href='mailto:'+String(val).replace(/^mailto:/,'');else if(action==='phone'&&val)href='tel:'+String(val).replace(/^tel:/,'');else if(action==='save')href='#save-contact';else if(val&&/^https?:\/\//i.test(val))href=val;const el=document.createElement(href?'a':'button');el.className='action';const strokeFiles={email:'email',phone:'phone',instagram:'instagram',website:'portfolio',portfolio:'portfolio',facebook:'facebook',save:'save-contact'};const stroke=b.stroke||strokeFiles[action]||(b.label||'').toLowerCase().replace(/[^a-z]+/g,'-').replace(/^-|-$/g,'');const available=['email','phone','instagram','portfolio','facebook','save-contact'];el.style.setProperty('--stroke',`url("assets/strokes/${available.includes(stroke)?stroke:'email'}.png")`);if(href&&action!=='save'){el.href=href;if(/^https?:/i.test(href)){el.target='_blank';el.rel='noopener noreferrer'}}else if(action==='save'){el.href='#save-contact';el.addEventListener('click',e=>{e.preventDefault();save()})}else{el.type='button';el.setAttribute('aria-disabled','true');el.title='Add a link in settings.js';el.addEventListener('click',()=>alert('Please add this contact link in settings.js.'))}const label=document.createElement('span');label.className='label';label.textContent=b.label||action;el.append(label);buttons.append(el)});
+})();
+</script></body></html>
